@@ -6,12 +6,10 @@ const PORT = process.env.PORT || 3000;
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
 
-// Serve the index.html file
 app.get("/", (req, res) => {
     res.sendFile(__dirname + "/index.html");
 });
 
-// Handle POST request to update the HTML file
 app.post("/update", (req, res) => {
     const { content } = req.body;
     if (!content) return res.status(400).send("No content provided");
